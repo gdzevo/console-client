@@ -214,6 +214,15 @@ int psync_user_is_admin(){
     if (ag->gr_gid==psync_gids[i])
       return 1;
   return 0;
+#elif defined(P_OS_LINUX)
+  uid_t uid=getuid(), euid=geteuid();
+  if (uid<=0 || uid!=euid) {
+    debug(D_NOTICE, "user is admin");
+    return 1;
+  } else {
+    debug(D_NOTICE, "user is not admin");
+    return 0;
+  }
 #else
   return 0;
 #endif

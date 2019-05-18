@@ -1,2 +1,6 @@
 *.o
 *.a
+.idea
+release
+pCloudCC/CMakeFiles
+pCloudCC/CMakeCache.txt
