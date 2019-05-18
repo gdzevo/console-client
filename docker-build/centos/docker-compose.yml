@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+#  pcloud-debugger:
+#    build: .
+#    security_opt: # options needed for gdb debugging
+#      - seccomp:unconfined
+#      - apparmor:unconfined
+#    cap_add:
+#      - SYS_ADMIN
+#    privileged: true # fuse device
+#    container_name: pcloud-debug-centos
+#    ports:
+#      - "7776:22"
+#      - "7777:7777"
+#    volumes:
+#      - ../../:/code
+#    working_dir: /code
+  pcloud-builder:
+    build: .
+    command: "docker-build/build.sh release"
+    container_name: pcloud-build-centos
+    volumes:
+      - ../../:/code
+    working_dir: /code
